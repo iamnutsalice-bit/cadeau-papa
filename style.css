@@ -1,0 +1,56 @@
+body{
+    background-color: rgb(253, 245, 233);
+}
+p {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+#contenu-dynamique {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+}
+
+h1{
+    display : none;
+}
+
+h2 {
+  align-self: flex-end;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #444;
+  border: 1px solid #444;
+  padding: 4px 8px;
+  opacity: 0.8;
+}
+
+img, video {
+  display: block;
+  align-self: center;
+}
+
+.photo-paysage {
+  max-width: 85%;
+  height : auto;
+  object-fit: contain;
+}
+
+.photo-portrait {
+  max-height: 55vh;
+  width : auto;
+  object-fit: contain;
+}
+
+p{
+  font-family: "Ballet", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 4rem;
+  font-style: normal;
+}

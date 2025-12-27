@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chargement du Souvenir</title>
+</head>
+<body>
+    <video id="transition-video" src="transition_viceversa.mp4" style="width: 100%; display: none;"></video>
+
+    <button id="start-button">
+        TAPEZ ICI pour charger la Boule de Souvenir ! 💡
+    </button>
+
+    <p id="message-chargement" style="display: none;">Chargement du souvenir...</p>
+
+    <script>
+
+const startButton = document.getElementById('start-button');
+const video = document.getElementById('transition-video');
+const loadingMessage = document.getElementById('message-chargement');
+const dureeVideo = 5000; // 5 secondes
+
+startButton.addEventListener('click', () => {
+    // 1. Masquer le bouton de démarrage
+    startButton.style.display = 'none';
+
+    // 2. Afficher la vidéo et la démarrer (le clic lève le blocage)
+    video.style.display = 'block';
+    video.play();
+
+    // 3. (Optionnel) Afficher le message de chargement après quelques millisecondes
+    setTimeout(() => {
+         loadingMessage.style.display = 'block';
+    }, 500); 
+
+    // 4. Attendre la durée de la vidéo et rediriger
+    setTimeout(() => {
+        window.location.replace(`index.html`);
+    }, dureeVideo);
+});
+    </script>
+</body>
+</html>
+

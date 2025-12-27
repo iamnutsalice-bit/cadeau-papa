@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Souvenir Vice-Versa</title>
+  <link rel="stylesheet" href="style.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&display=swap" rel="stylesheet">
+</head>
+    
+<body>
+    <div id="boule-souvenir">
+        <div id="contenu-dynamique"></div>
+    </div>
+
+    <script>
+
+    // 2. Fonction pour récupérer les données du souvenir
+  fetch('memoire.json')
+  .then(response => response.json())
+  .then(memoires => {
+    const indexAleatoire = Math.floor(Math.random() * memoires.length);
+    const souvenir = memoires[indexAleatoire];
+
+    afficherSouvenir(souvenir);
+  })
+  .catch(error => {
+    console.error('Erreur de chargement du fichier mémoire :', error);
+  });
+// 3. Fonction pour construire l'affichage
+function afficherSouvenir(memoire) {
+  const contenuDiv = document.getElementById('contenu-dynamique');
+  let htmlContent = '';
+
+  // Affichage du Titre et de la Description
+  htmlContent += `<h1>${memoire.titre}</h1>`;
+  htmlContent += `<h2>${memoire.date}</h2>`;
+
+  // Logique pour afficher le bon média en fonction du "type_media"
+  if (memoire.type_media === 'photo') {
+    if (memoire.orientation === 'portrait') {
+      htmlContent += `<img src="${memoire.lien_media}" alt="${memoire.titre}" class="photo-portrait">`;
+    } else {
+      htmlContent += `<img src="${memoire.lien_media}" alt="${memoire.titre}" class="photo-paysage">`;
+    }
+  } else if (memoire.type_media === 'video') {
+    htmlContent += `<video src="${memoire.lien_media}" controls autoplay></video>`;
+  } else if (memoire.type_media === 'audio' && memoire.lien_audio) {
+    // Si c'est un message audio, on affiche seulement le lecteur audio
+    htmlContent += `<audio src="${memoire.lien_audio}" controls autoplay></audio>`;
+  }
+
+  htmlContent += `<p>${memoire.description}</p>`;
+  
+  contenuDiv.innerHTML = htmlContent;
+
+
+}
+    </script>
+</body>
+</html>
