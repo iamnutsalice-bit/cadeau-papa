@@ -51,11 +51,26 @@ function afficherSouvenir(memoire) {
     htmlContent += `<audio src="${memoire.lien_audio}" controls autoplay></audio>`;
   }
 
-  htmlContent += `<p>${memoire.description}</p>`;
+  htmlContent += `<h3>${memoire.lieu}</h3>`;
+  htmlContent += `<p id="desc"></p>`;
   
   contenuDiv.innerHTML = htmlContent;
+  ecrireDescription(memoire.description, 'desc');
+}
 
-
+function ecrireDescription ( texte, elementID, delay=40, startDelay=1300){
+  const description = document.getElementById(elementID);
+  let index = 0;
+  console.log("Début du tapage de la lettre");
+  setTimeout(taperLettre, startDelay);
+  function taperLettre() {
+    if (index < texte.length) {
+      description.textContent += texte.charAt(index);
+      index++;
+      setTimeout(taperLettre, delay);
+    }
+  }
+  
 }
     </script>
 </body>

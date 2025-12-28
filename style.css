@@ -1,6 +1,23 @@
+
 body{
-    background-color: rgb(253, 245, 233);
+    background-color: black;
+    animation: fond-apparition 1s ease-out 0.2s forwards;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* centrage vertical */
+    align-items: center;     /* centrage horizontal */
 }
+
+@keyframes fond-apparition {
+    from {
+        background-color: black;
+    }
+    to {
+        background-color: rgb(253, 245, 233);
+    }
+}
+
 p {
   font-family: "Caveat", cursive;
   font-optical-sizing: auto;
@@ -10,8 +27,21 @@ p {
 #contenu-dynamique {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  max-width: 100%;
   padding: 16px;
   gap: 12px;
+  opacity : 0;
+  animation : apparition-souvenir 1.5s ease-out 0.3s forwards;
+}
+
+@keyframes apparition-souvenir{
+    from{
+        opacity : 0;
+    }
+    to {
+        opacity : 1;
+    }
 }
 
 h1{
@@ -21,17 +51,36 @@ h1{
 h2 {
   align-self: flex-end;
   font-family: "Courier New", monospace;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 1px;
-  color: #444;
   border: 1px solid #444;
   padding: 4px 8px;
-  opacity: 0.8;
+  margin-bottom: 0px;
+}
+
+h3{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin: 0px;
+    border: 1px solid #444;
+    padding: 4px 8px;
 }
 
 img, video {
   display: block;
   align-self: center;
+  border-radius: 5px;
+  transform: scale(0.95);
+  animation: grandissement 0.8s ease-out 0.5s forwards;
+}
+@keyframes grandissement {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .photo-paysage {
@@ -49,8 +98,9 @@ img, video {
 p{
   font-family: "Ballet", cursive;
   font-optical-sizing: auto;
+  text-align: center;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 4rem;
   font-style: normal;
 }
